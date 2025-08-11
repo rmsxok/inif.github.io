@@ -16,7 +16,6 @@
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
     }
-    /* 영어 폰트 */
     .eng {
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
@@ -28,10 +27,9 @@
       position: sticky;
       top: 0;
       background-color: #f8f8f8;
-      padding: 0.8rem 1rem;
+      padding: 0.8rem 0.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       border-bottom: 1px solid #ddd;
       z-index: 1002;
     }
@@ -47,22 +45,25 @@
       cursor: pointer;
       color: var(--accent-blue);
       margin-left: auto;
+      position: absolute;
+      right: 0.8rem;
     }
 
-    /* 모바일 메뉴 (상단 드롭다운) */
+    /* 네비게이션 (드롭다운) */
     nav {
       position: absolute;
-      top: 60px; /* 헤더 높이만큼 아래 */
+      top: 60px;
       left: 0;
       width: 100%;
       background-color: #f8f8f8;
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease-in-out;
       border-bottom: 1px solid #ddd;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s ease-in-out;
+      z-index: 1001;
     }
     nav.show {
-      max-height: 300px; /* 필요한 만큼만 열림 */
+      transform: scaleY(1);
     }
     nav a {
       display: block;
@@ -82,7 +83,7 @@
     /* 오버레이 */
     .overlay {
       position: fixed;
-      top: 60px; /* 헤더 아래부터 */
+      top: 60px;
       left: 0;
       height: calc(100% - 60px);
       width: 100%;
@@ -97,7 +98,7 @@
       visibility: visible;
     }
 
-    /* 대문 Hero */
+    /* Hero */
     .hero {
       height: calc(100vh - 60px);
       display: flex;
@@ -133,19 +134,19 @@
       border-top: 2px solid var(--accent-blue);
     }
 
-    /* 데스크탑 메뉴 */
+    /* 데스크탑 */
     @media (min-width: 768px) {
       .menu-toggle {
         display: none;
       }
       nav {
         position: static;
-        max-height: none;
+        transform: none;
+        transition: none;
         display: flex;
         justify-content: flex-end;
-        border-bottom: none;
         background: none;
-        height: auto;
+        border-bottom: none;
       }
       nav a {
         padding: 0 1.2rem;
@@ -176,7 +177,7 @@
     <a href="#contact">contact</a>
   </nav>
 
-  <!-- 대문 Hero -->
+  <!-- Hero -->
   <section class="hero">
     <div class="box">discover our vision</div>
   </section>

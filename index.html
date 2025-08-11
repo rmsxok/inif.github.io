@@ -12,31 +12,47 @@
       font-family: 'Courier New', Courier, monospace;
       line-height: 1.6;
       scroll-behavior: smooth;
+      margin: 0;
     }
     header {
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1rem;
-      color: #4b5d4f;
-    }
-    nav {
-      text-align: center;
-      padding: 1rem 0;
-      border-top: 1px solid #dcd7d0;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid #dcd7d0;
     }
-    nav a {
-      margin: 0 0.8rem;
+    header h1 {
+      font-size: 1.2rem;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+    /* 햄버거 버튼 */
+    .menu-toggle {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
       color: #3a2f2a;
-      font-weight: bold;
+    }
+    nav {
+      display: none;
+      flex-direction: column;
+      background-color: #f8f5f0;
+      border-top: 1px solid #dcd7d0;
+    }
+    nav a {
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #e5e5e5;
+      color: #3a2f2a;
       text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      background-color: #eae6df;
+    }
+    nav.show {
+      display: flex;
     }
     section {
       padding: 3rem 1rem;
@@ -67,17 +83,20 @@
 </head>
 <body>
 
+  <!-- 헤더 -->
   <header>
     <h1>BRAND STUDIO</h1>
-    <p>Timeless Design for Authentic Brands</p>
+    <button class="menu-toggle" aria-label="메뉴 열기/닫기">☰</button>
   </header>
 
-  <nav>
+  <!-- 네비게이션 -->
+  <nav id="navbar">
     <a href="#about">About</a>
     <a href="#philosophy">Philosophy</a>
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- 콘텐츠 섹션 -->
   <section id="about">
     <h2>About Us</h2>
     <p>
@@ -102,11 +121,20 @@
     </p>
   </section>
 
+  <!-- 푸터 -->
   <footer>
     © 2025 Brand Studio • All Rights Reserved
   </footer>
 
+  <!-- 스크립트 -->
   <script>
+    // 메뉴 토글
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbar = document.getElementById('navbar');
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('show');
+    });
+
     // 스크롤 시 페이드인 효과
     const sections = document.querySelectorAll('section');
     const options = { threshold: 0.2 };

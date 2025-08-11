@@ -21,7 +21,7 @@
     .eng {
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
-      letter-spacing: 0.18em; /* 자간 약간 줄임 */
+      letter-spacing: 0.18em;
     }
 
     /* 헤더 */
@@ -29,9 +29,10 @@
       position: sticky;
       top: 0;
       background-color: #f8f8f8;
-      padding: 0.8rem 2rem;
+      padding: 0.8rem 1.2rem; /* 좌우 여백 줄임 */
       display: flex;
       align-items: center;
+      justify-content: space-between; /* 로고 왼쪽, 메뉴 버튼 오른쪽 */
       border-bottom: 1px solid #ddd;
       z-index: 1000;
     }
@@ -47,7 +48,8 @@
       border: none;
       cursor: pointer;
       color: #000;
-      margin-left: auto; /* 버튼을 우측 끝으로 밀기 */
+      margin-left: auto;
+      padding: 0; /* 버튼 자체 여백 제거 */
     }
 
     /* 네비게이션 */
@@ -120,7 +122,7 @@
       padding: 3rem 1rem;
       font-size: 0.85rem;
       color: #888;
-      border-top: 2px solid var(--accent-blue); /* 포인트 블루 라인 */
+      border-top: 2px solid var(--accent-blue);
     }
 
     /* PC 레이아웃 */
@@ -134,7 +136,7 @@
         align-items: center;
         background: none;
         padding: 0;
-        margin-left: auto; /* 메뉴를 완전히 우측으로 */
+        margin-left: auto;
         margin-right: 0;
       }
       nav a {
@@ -152,7 +154,8 @@
     <button class="menu-toggle" aria-label="메뉴 열기/닫기">☰</button>
     <nav id="navbar">
       <a href="#about">about</a>
-      <a href="#philosophy">philosophy</a>
+      <a href="#collection">collection</a>
+      <a href="#journal">journal</a>
       <a href="#services">services</a>
       <a href="#contact">contact</a>
     </nav>

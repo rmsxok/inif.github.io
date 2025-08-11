@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brand Studio</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --accent-blue: #0077B6;
+    }
     body {
       background-color: #f8f8f8;
       color: #000;
@@ -27,7 +29,7 @@
       position: sticky;
       top: 0;
       background-color: #f8f8f8;
-      padding: 0.8rem 3rem;
+      padding: 0.8rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,13 +37,13 @@
       z-index: 1000;
     }
     header h1 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin: 0;
       color: #000;
       font-weight: normal;
     }
     .menu-toggle {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       background: none;
       border: none;
       cursor: pointer;
@@ -55,16 +57,16 @@
       flex-direction: column;
       text-align: right;
       background-color: #f8f8f8;
-      padding: 1rem 3rem;
+      padding: 1rem 2rem;
     }
     nav a {
-      padding: 0.8rem 0;
+      padding: 1rem 0;
       text-decoration: none;
       color: #000;
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       position: relative;
     }
     nav a::after {
@@ -74,7 +76,7 @@
       left: 50%;
       width: 0;
       height: 1px;
-      background-color: #555;
+      background-color: var(--accent-blue);
       transition: all 0.3s ease;
     }
     nav a:hover::after {
@@ -94,7 +96,7 @@
       text-align: center;
     }
     .hero h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
       letter-spacing: 0.35em;
@@ -116,6 +118,7 @@
       letter-spacing: 0.25em;
       text-align: center;
       margin-bottom: 2rem;
+      color: var(--accent-blue);
     }
     main p {
       font-size: 1rem;
@@ -148,7 +151,7 @@
       }
       nav a {
         border: none;
-        padding: 0 1rem;
+        padding: 0 1.2rem;
       }
     }
   </style>

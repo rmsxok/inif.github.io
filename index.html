@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brand Studio</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
       --accent-blue: #0077B6;
     }
     body {
-      background-color: #f8f8f8;
+      background: #f8f8f8;
       color: #000;
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
@@ -26,17 +26,17 @@
     header {
       position: sticky;
       top: 0;
-      background-color: #f8f8f8;
-      padding: 0.8rem 0.5rem;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      background: #f8f8f8;
+      padding: 0.8rem 1rem;
       border-bottom: 1px solid #ddd;
-      z-index: 1002;
+      z-index: 1001;
     }
     header h1 {
       font-size: 0.9rem;
       font-weight: normal;
-      color: #000;
     }
     .menu-toggle {
       font-size: 1.5rem;
@@ -44,36 +44,35 @@
       border: none;
       cursor: pointer;
       color: var(--accent-blue);
-      margin-left: auto;
-      position: absolute;
-      right: 0.8rem;
+      margin-left: auto; /* 오른쪽 끝으로 */
     }
 
-    /* 네비게이션 (드롭다운) */
+    /* 네비게이션 (모바일 드롭다운) */
     nav {
+      display: none;
+      flex-direction: column;
+      background: #f8f8f8;
+      border-bottom: 1px solid #ddd;
       position: absolute;
       top: 60px;
       left: 0;
       width: 100%;
-      background-color: #f8f8f8;
-      border-bottom: 1px solid #ddd;
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform 0.3s ease-in-out;
-      z-index: 1001;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
     }
     nav.show {
-      transform: scaleY(1);
+      display: flex;
+      opacity: 1;
     }
     nav a {
-      display: block;
       padding: 0.8rem 1rem;
       text-decoration: none;
-      color: #000;
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
       font-size: 0.9rem;
       letter-spacing: 0.15em;
+      color: #000;
       transition: color 0.3s ease;
     }
     nav a:hover {
@@ -82,20 +81,17 @@
 
     /* 오버레이 */
     .overlay {
+      display: none;
       position: fixed;
       top: 60px;
       left: 0;
-      height: calc(100% - 60px);
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
+      height: calc(100% - 60px);
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 999;
     }
     .overlay.show {
-      opacity: 1;
-      visibility: visible;
+      display: block;
     }
 
     /* Hero */
@@ -104,54 +100,39 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
     }
     .box {
       border: 1px solid #000;
-      border-radius: 4px;
       padding: 2rem 3rem;
       min-width: 250px;
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
       font-size: 1rem;
       letter-spacing: 0.2em;
-      color: #000;
-      transition: all 0.3s ease;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
     .box:hover {
       border-color: var(--accent-blue);
       color: var(--accent-blue);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    /* 푸터 */
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      font-size: 0.85rem;
-      color: #888;
-      border-top: 2px solid var(--accent-blue);
-    }
-
-    /* 데스크탑 */
+    /* 데스크탑 메뉴 */
     @media (min-width: 768px) {
-      .menu-toggle {
-        display: none;
-      }
       nav {
+        display: flex !important;
+        opacity: 1 !important;
         position: static;
-        transform: none;
-        transition: none;
-        display: flex;
-        justify-content: flex-end;
+        flex-direction: row;
         background: none;
         border-bottom: none;
+        width: auto;
       }
       nav a {
         padding: 0 1.2rem;
       }
-      .overlay {
+      .menu-toggle, .overlay {
         display: none;
       }
     }
@@ -165,7 +146,7 @@
   <!-- 헤더 -->
   <header>
     <h1 class="eng">brand studio</h1>
-    <button class="menu-toggle" aria-label="메뉴 열기/닫기">☰</button>
+    <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
   </header>
 
   <!-- 네비게이션 -->

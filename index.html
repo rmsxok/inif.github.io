@@ -33,7 +33,7 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid #ddd;
-      z-index: 1001;
+      z-index: 1002;
     }
     header h1 {
       font-size: 0.9rem;
@@ -49,28 +49,24 @@
       margin-left: auto;
     }
 
-    /* 네비게이션 (모바일) */
+    /* 모바일 메뉴 (상단 드롭다운) */
     nav {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 180px; /* 폭 축소 */
+      position: absolute;
+      top: 60px; /* 헤더 높이만큼 아래 */
+      left: 0;
+      width: 100%;
       background-color: #f8f8f8;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      padding: 1.5rem;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      z-index: 1002;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease-in-out;
+      border-bottom: 1px solid #ddd;
     }
     nav.show {
-      transform: translateX(0);
+      max-height: 300px; /* 필요한 만큼만 열림 */
     }
     nav a {
-      padding: 0.7rem 0;
+      display: block;
+      padding: 0.8rem 1rem;
       text-decoration: none;
       color: #000;
       font-family: 'Courier New', Courier, monospace;
@@ -86,9 +82,9 @@
     /* 오버레이 */
     .overlay {
       position: fixed;
-      top: 0;
+      top: 60px; /* 헤더 아래부터 */
       left: 0;
-      height: 100%;
+      height: calc(100% - 60px);
       width: 100%;
       background-color: rgba(0, 0, 0, 0.4);
       opacity: 0;
@@ -144,16 +140,12 @@
       }
       nav {
         position: static;
-        transform: none;
-        transition: none;
-        height: auto;
-        width: auto;
-        box-shadow: none;
-        flex-direction: row;
-        align-items: center;
+        max-height: none;
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: none;
         background: none;
-        padding: 0;
-        margin-left: auto;
+        height: auto;
       }
       nav a {
         padding: 0 1.2rem;
@@ -173,14 +165,16 @@
   <header>
     <h1 class="eng">brand studio</h1>
     <button class="menu-toggle" aria-label="메뉴 열기/닫기">☰</button>
-    <nav id="navbar">
-      <a href="#about">about</a>
-      <a href="#collection">collection</a>
-      <a href="#journal">journal</a>
-      <a href="#services">services</a>
-      <a href="#contact">contact</a>
-    </nav>
   </header>
+
+  <!-- 네비게이션 -->
+  <nav id="navbar">
+    <a href="#about">about</a>
+    <a href="#collection">collection</a>
+    <a href="#journal">journal</a>
+    <a href="#services">services</a>
+    <a href="#contact">contact</a>
+  </nav>
 
   <!-- 대문 Hero -->
   <section class="hero">

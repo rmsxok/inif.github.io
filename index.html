@@ -6,7 +6,7 @@
   <title>Brand Studio</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #f8f8f8;
@@ -19,7 +19,7 @@
     .eng {
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.25em;
     }
 
     /* 헤더 */
@@ -27,7 +27,7 @@
       position: sticky;
       top: 0;
       background-color: #f8f8f8;
-      padding: 1rem 2rem;
+      padding: 0.8rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,12 +35,13 @@
       z-index: 1000;
     }
     header h1 {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
       margin: 0;
       color: #000;
+      font-weight: normal;
     }
     .menu-toggle {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       background: none;
       border: none;
       cursor: pointer;
@@ -52,16 +53,18 @@
     nav {
       display: none;
       flex-direction: column;
-      text-align: center;
+      text-align: right;
       background-color: #f8f8f8;
+      padding: 1rem 3rem;
     }
     nav a {
-      padding: 1rem;
+      padding: 0.8rem 0;
       text-decoration: none;
       color: #000;
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
+      font-size: 0.9rem;
       position: relative;
     }
     nav a::after {
@@ -82,20 +85,53 @@
       display: flex;
     }
 
-    /* 대문 중앙 문구 */
+    /* 대문 Hero */
     .hero {
-      height: calc(100vh - 60px); /* 헤더 높이 제외 */
+      height: calc(100vh - 60px);
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
     }
     .hero h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.35em;
       color: #000;
+      font-weight: normal;
+    }
+
+    /* 섹션 */
+    main section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    main h2 {
+      font-family: 'Courier New', Courier, monospace;
+      text-transform: lowercase;
+      font-size: 1.4rem;
+      letter-spacing: 0.25em;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    main p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* 푸터 */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.85rem;
+      color: #888;
     }
 
     /* PC 레이아웃 */
@@ -106,7 +142,9 @@
       nav {
         display: flex !important;
         flex-direction: row;
+        align-items: center;
         background: none;
+        padding: 0;
       }
       nav a {
         border: none;
@@ -133,6 +171,49 @@
   <section class="hero">
     <h2>design speaks louder</h2>
   </section>
+
+  <!-- 본문 섹션 -->
+  <main>
+    <section id="about">
+      <h2>about us</h2>
+      <p>
+        우리는 단순함 속에서 깊이를 찾습니다.  
+        브랜드의 이야기를 진정성 있게 전하며,  
+        그 가치가 오래도록 남도록 디자인합니다.
+      </p>
+    </section>
+
+    <section id="philosophy">
+      <h2>our philosophy</h2>
+      <p>
+        유행은 지나가지만, 본질은 남습니다.  
+        우리는 본질에 집중하여 브랜드를  
+        시대를 초월한 아이덴티티로 만듭니다.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>services</h2>
+      <p>
+        브랜드 아이덴티티 디자인<br>
+        웹사이트 & 디지털 경험 설계<br>
+        크리에이티브 컨설팅
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>contact</h2>
+      <p>
+        hello@brandstudio.com<br>
+        +82 10-1234-5678
+      </p>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    © 2025 brand studio • all rights reserved
+  </footer>
 
   <script>
     // 모바일 메뉴 토글

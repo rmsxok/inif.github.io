@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent-blue: #0077B6;
+      --accent-blue: #<0077B6;
     }
     body {
       background-color: #f8f8f8;
@@ -21,7 +21,7 @@
     .eng {
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.18em; /* 자간 약간 줄임 */
     }
 
     /* 헤더 */
@@ -41,7 +41,6 @@
       margin: 0;
       color: #000;
       font-weight: normal;
-      padding-left: 0.5rem; /* 좌측 살짝 띄우기 */
     }
     .menu-toggle {
       font-size: 1.4rem;
@@ -69,6 +68,7 @@
       text-transform: lowercase;
       font-size: 0.95rem;
       position: relative;
+      letter-spacing: 0.15em;
     }
     nav a::after {
       content: "";
@@ -98,6 +98,7 @@
     }
     .box {
       border: 1px solid #000;
+      border-radius: 4px;
       padding: 2rem 3rem;
       min-width: 250px;
       font-family: 'Courier New', Courier, monospace;
@@ -111,6 +112,7 @@
     .box:hover {
       border-color: var(--accent-blue);
       color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     /* 푸터 */
@@ -119,6 +121,7 @@
       padding: 3rem 1rem;
       font-size: 0.85rem;
       color: #888;
+      border-top: 2px solid var(--accent-blue); /* 포인트 블루 라인 */
     }
 
     /* PC 레이아웃 */
@@ -132,7 +135,8 @@
         align-items: center;
         background: none;
         padding: 0;
-        margin-right: -0.5rem; /* 메뉴를 우측으로 살짝 이동 */
+        margin-left: auto; /* 메뉴를 완전히 우측으로 */
+        margin-right: 0;
       }
       nav a {
         border: none;

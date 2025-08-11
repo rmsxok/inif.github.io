@@ -29,10 +29,10 @@
       position: sticky;
       top: 0;
       background-color: #f8f8f8;
-      padding: 0.8rem 1.2rem; /* 좌우 여백 줄임 */
+      padding: 0.8rem 0.8rem 0.8rem 1.2rem; /* 오른쪽 여백 최소화 */
       display: flex;
       align-items: center;
-      justify-content: space-between; /* 로고 왼쪽, 메뉴 버튼 오른쪽 */
+      justify-content: space-between;
       border-bottom: 1px solid #ddd;
       z-index: 1000;
     }
@@ -47,9 +47,9 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: #000;
+      color: var(--accent-blue); /* 포인트 컬러 적용 */
       margin-left: auto;
-      padding: 0; /* 버튼 자체 여백 제거 */
+      margin-right: 0.2rem; /* 우측 끝에 거의 붙게 */
     }
 
     /* 네비게이션 */

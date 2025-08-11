@@ -17,7 +17,7 @@
       margin: 0;
     }
 
-    /* 영어 전용 스타일 */
+    /* 영어 폰트 */
     .eng {
       font-family: 'Courier New', Courier, monospace;
       text-transform: lowercase;
@@ -29,27 +29,25 @@
       position: sticky;
       top: 0;
       background-color: #f8f8f8;
-      padding: 0.8rem 0; /* 양쪽 패딩 최소화 */
+      padding: 0.8rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid #ddd;
-      z-index: 1000;
-      width: 100%;
+      z-index: 1001;
     }
     header h1 {
       font-size: 0.9rem;
-      margin-left: 1rem;
       color: #000;
       font-weight: normal;
     }
     .menu-toggle {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       background: none;
       border: none;
       cursor: pointer;
       color: var(--accent-blue);
-      margin-right: 1rem; /* 버튼이 우측 끝까지 붙도록 */
+      margin-left: auto; /* 오른쪽 끝으로 밀기 */
     }
 
     /* 네비게이션 (슬라이드 메뉴) */
@@ -58,7 +56,7 @@
       top: 0;
       right: 0;
       height: 100%;
-      width: 220px;
+      width: 240px;
       background-color: #f8f8f8;
       display: flex;
       flex-direction: column;
@@ -67,7 +65,7 @@
       transform: translateX(100%);
       transition: transform 0.3s ease-in-out;
       box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      z-index: 999;
+      z-index: 1002;
     }
     nav.show {
       transform: translateX(0);
@@ -85,6 +83,24 @@
     }
     nav a:hover {
       color: var(--accent-blue);
+    }
+
+    /* 오버레이 */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
     }
 
     /* 대문 Hero */
@@ -140,15 +156,20 @@
         background: none;
         padding: 0;
         margin-left: auto;
-        margin-right: 1rem;
       }
       nav a {
         padding: 0 1.2rem;
+      }
+      .overlay {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- 오버레이 -->
+  <div class="overlay" id="overlay"></div>
 
   <!-- 헤더 -->
   <header>
@@ -176,8 +197,16 @@
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navbar = document.getElementById('navbar');
+    const overlay = document.getElementById('overlay');
+
     menuToggle.addEventListener('click', () => {
       navbar.classList.toggle('show');
+      overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      navbar.classList.remove('show');
+      overlay.classList.remove('show');
     });
   </script>
 

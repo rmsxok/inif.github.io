@@ -8,58 +8,82 @@
   <style>
     body {
       background-color: #f8f5f0;
-      color: #3a2f2a;
+      color: #2f2b27;
       font-family: 'Courier New', Courier, monospace;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      line-height: 1.7;
       margin: 0;
     }
+
+    /* 헤더 */
     header {
-      padding: 1rem;
+      position: sticky;
+      top: 0;
+      background-color: #f8f5f0;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #dcd7d0;
+      border-bottom: 1px solid #e3ded7;
+      z-index: 1000;
     }
     header h1 {
       font-size: 1.2rem;
+      letter-spacing: 3px;
       margin: 0;
-      letter-spacing: 2px;
     }
-    /* 햄버거 버튼 */
     .menu-toggle {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       background: none;
       border: none;
       cursor: pointer;
-      color: #3a2f2a;
+      display: block;
     }
+
+    /* 네비게이션 */
     nav {
       display: none;
       flex-direction: column;
+      text-align: center;
       background-color: #f8f5f0;
-      border-top: 1px solid #dcd7d0;
     }
     nav a {
       padding: 1rem;
-      text-align: center;
-      border-bottom: 1px solid #e5e5e5;
-      color: #3a2f2a;
       text-decoration: none;
+      color: #2f2b27;
       font-weight: bold;
+      position: relative;
+      overflow: hidden;
     }
-    nav a:hover {
-      background-color: #eae6df;
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background-color: #4b5d4f;
+      transition: all 0.3s ease;
+    }
+    nav a:hover::after {
+      left: 0;
+      width: 100%;
     }
     nav.show {
       display: flex;
     }
-    section {
-      padding: 3rem 1rem;
-      max-width: 700px;
+
+    /* 섹션 스타일 */
+    main {
+      max-width: 800px;
       margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    section {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid #e3ded7;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     section.visible {
@@ -67,17 +91,42 @@
       transform: translateY(0);
     }
     h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.6rem;
       text-align: center;
+      margin-bottom: 1.5rem;
+      color: #4b5d4f;
+      letter-spacing: 2px;
     }
+    p {
+      text-align: center;
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* 푸터 */
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.85rem;
       color: #888;
-      border-top: 1px solid #dcd7d0;
-      margin-top: 3rem;
+      border-top: 1px solid #e3ded7;
+    }
+
+    /* PC 레이아웃 */
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        background: none;
+      }
+      nav a {
+        border: none;
+        padding: 0 1rem;
+      }
     }
   </style>
 </head>
@@ -87,39 +136,51 @@
   <header>
     <h1>BRAND STUDIO</h1>
     <button class="menu-toggle" aria-label="메뉴 열기/닫기">☰</button>
+    <nav id="navbar">
+      <a href="#about">About</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <!-- 네비게이션 -->
-  <nav id="navbar">
-    <a href="#about">About</a>
-    <a href="#philosophy">Philosophy</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <!-- 메인 -->
+  <main>
+    <section id="about">
+      <h2>ABOUT US</h2>
+      <p>
+        우리는 단순함 속에서 깊이를 찾습니다.  
+        브랜드의 이야기를 진정성 있게 전하며,  
+        그 가치가 오래도록 남도록 디자인합니다.
+      </p>
+    </section>
 
-  <!-- 콘텐츠 섹션 -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      우리는 브랜드의 진짜 이야기를 세상에 전합니다.
-      복잡함 속에서 본질을 찾아내고, 그 가치를 오랫동안 유지할 수 있는 디자인을 만듭니다.
-    </p>
-  </section>
+    <section id="philosophy">
+      <h2>OUR PHILOSOPHY</h2>
+      <p>
+        유행은 지나가지만, 본질은 남습니다.  
+        우리는 본질에 집중하여 브랜드를  
+        시대를 초월한 아이덴티티로 만듭니다.
+      </p>
+    </section>
 
-  <section id="philosophy">
-    <h2>Our Philosophy</h2>
-    <p>
-      유행을 쫓기보다, 브랜드가 가진 고유한 색과 이야기에 집중합니다.
-      단순함 속에 숨겨진 깊이를 표현하고, 오래도록 사랑받는 결과물을 만들어냅니다.
-    </p>
-  </section>
+    <section id="services">
+      <h2>SERVICES</h2>
+      <p>
+        브랜드 아이덴티티 디자인<br>
+        웹사이트 & 디지털 경험 설계<br>
+        크리에이티브 컨설팅
+      </p>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      프로젝트 문의 및 협업 제안은 이메일로 보내주세요.<br>
-      <strong>hello@brandstudio.com</strong>
-    </p>
-  </section>
+    <section id="contact">
+      <h2>CONTACT</h2>
+      <p>
+        hello@brandstudio.com<br>
+        +82 10-1234-5678
+      </p>
+    </section>
+  </main>
 
   <!-- 푸터 -->
   <footer>
@@ -128,7 +189,7 @@
 
   <!-- 스크립트 -->
   <script>
-    // 메뉴 토글
+    // 모바일 메뉴 토글
     const menuToggle = document.querySelector('.menu-toggle');
     const navbar = document.getElementById('navbar');
     menuToggle.addEventListener('click', () => {

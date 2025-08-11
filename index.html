@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>브랜드 스튜디오</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    body {
+      background-color: #fdfdfd;
+      color: #222;
+    }
+    nav {
+      margin-bottom: 2rem;
+    }
+    h1, h2, h3 {
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+    figure img {
+      border-radius: 8px;
+      width: 100%;
+      height: auto;
+    }
+    main.container {
+      padding: 2rem 0;
+    }
+    footer {
+      margin-top: 3rem;
+      padding: 1rem 0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>Brand Studio</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#" role="button">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>우리가 만드는 이야기</h2>
+          <h3>Design that speaks for itself</h3>
+        </hgroup>
+        <p>
+          Brand Studio는 단순한 디자인을 넘어, 브랜드의 본질을 시각적으로 표현합니다.
+          우리의 작업은 복잡함을 줄이고, 진정성과 감각을 더해, 보는 순간 브랜드의 정체성이 느껴지도록 만듭니다.
+        </p>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="브랜드 스튜디오 작업 이미지">
+          <figcaption><a href="https://unsplash.com" target="_blank">이미지 출처: Unsplash</a></figcaption>
+        </figure>
+        <h3>철학</h3>
+        <p>
+          우리는 브랜드와 고객이 자연스럽게 연결될 수 있는 경험을 설계합니다.
+          유행을 좇기보다 브랜드의 핵심을 오랫동안 유지하는 디자인을 추구합니다.
+        </p>
+        <h3>서비스</h3>
+        <p>
+          비주얼 아이덴티티, 웹사이트 디자인, 브랜드 전략 컨설팅 등 다양한 영역을 다룹니다.
+          모든 프로젝트는 브랜드만의 이야기를 시각적으로 완성하는 것을 목표로 합니다.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <section aria-label="Subscribe example">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>뉴스레터 구독</h2>
+          <h3>브랜드 디자인 인사이트를 받아보세요</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" id="firstname" name="firstname" placeholder="이름" aria-label="이름" required />
+          <input type="email" id="email" name="email" placeholder="이메일" aria-label="이메일" required />
+          <button type="submit" onclick="event.preventDefault()">구독하기</button>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer class="container">
+    <small><a href="#">© 2025 Brand Studio</a> • <a href="#">개인정보처리방침</a></small>
+  </footer>
+</body>
+</html>

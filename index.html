@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <style>
     body {
-      background-color: #f8f5f0;
-      color: #2f2b27;
+      background-color: #f8f8f8;
+      color: #000;
       font-family: 'Courier New', Courier, monospace;
       line-height: 1.7;
       margin: 0;
@@ -18,18 +18,19 @@
     header {
       position: sticky;
       top: 0;
-      background-color: #f8f5f0;
+      background-color: #f8f8f8;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #e3ded7;
+      border-bottom: 1px solid #ddd;
       z-index: 1000;
     }
     header h1 {
       font-size: 1.2rem;
       letter-spacing: 3px;
       margin: 0;
+      color: #000;
     }
     .menu-toggle {
       font-size: 1.4rem;
@@ -37,6 +38,7 @@
       border: none;
       cursor: pointer;
       display: block;
+      color: #000;
     }
 
     /* 네비게이션 */
@@ -44,15 +46,14 @@
       display: none;
       flex-direction: column;
       text-align: center;
-      background-color: #f8f5f0;
+      background-color: #f8f8f8;
     }
     nav a {
       padding: 1rem;
       text-decoration: none;
-      color: #2f2b27;
+      color: #000;
       font-weight: bold;
       position: relative;
-      overflow: hidden;
     }
     nav a::after {
       content: "";
@@ -61,7 +62,7 @@
       left: 50%;
       width: 0;
       height: 1px;
-      background-color: #4b5d4f;
+      background-color: #555;
       transition: all 0.3s ease;
     }
     nav a:hover::after {
@@ -72,16 +73,16 @@
       display: flex;
     }
 
-    /* 섹션 스타일 */
+    /* 메인 콘텐츠 */
     main {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 3rem 1.5rem;
     }
     section {
       margin-bottom: 4rem;
       padding-bottom: 4rem;
-      border-bottom: 1px solid #e3ded7;
+      border-bottom: 1px solid #ddd;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
@@ -94,7 +95,7 @@
       font-size: 1.6rem;
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #4b5d4f;
+      color: #000;
       letter-spacing: 2px;
     }
     p {
@@ -102,6 +103,22 @@
       font-size: 1rem;
       max-width: 650px;
       margin: 0 auto;
+      color: #555;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #000;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
     }
 
     /* 푸터 */
@@ -110,7 +127,7 @@
       padding: 2rem 1rem;
       font-size: 0.85rem;
       color: #888;
-      border-top: 1px solid #e3ded7;
+      border-top: 1px solid #ddd;
     }
 
     /* PC 레이아웃 */
@@ -146,6 +163,11 @@
 
   <!-- 메인 -->
   <main>
+    <section class="hero">
+      <h2>TIMELESS DESIGN</h2>
+      <p>심플함 속에서 브랜드의 본질을 찾다</p>
+    </section>
+
     <section id="about">
       <h2>ABOUT US</h2>
       <p>

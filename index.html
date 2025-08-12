@@ -1,188 +1,145 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brand Studio</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --accent-blue: #0077B6;
-    }
     body {
-      background: #f8f8f8;
-      color: #000;
-      font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
-    }
-    .eng {
-      font-family: 'Courier New', Courier, monospace;
-      text-transform: lowercase;
-      letter-spacing: 0.18em;
+      font-family: 'Courier New', monospace, 'Noto Sans KR', sans-serif;
+      background-color: #f8f8f8;
+      color: #000;
     }
 
-    /* 헤더 */
     header {
-      position: sticky;
-      top: 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background: #f8f8f8;
-      padding: 0.8rem 1rem;
+      align-items: center;
+      padding: 1rem 2rem;
       border-bottom: 1px solid #ddd;
-      z-index: 1001;
-    }
-    header h1 {
-      font-size: 0.9rem;
-      font-weight: normal;
-    }
-    .menu-toggle {
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--accent-blue);
-      margin-left: auto; /* 오른쪽 끝으로 */
     }
 
-    /* 네비게이션 (모바일 드롭다운) */
-    nav {
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      line-height: 1.2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-size: 0.9rem;
+      text-transform: lowercase;
+    }
+
+    /* 모바일 메뉴 버튼 */
+    .menu-toggle {
       display: none;
       flex-direction: column;
-      background: #f8f8f8;
-      border-bottom: 1px solid #ddd;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-    }
-    nav.show {
-      display: flex;
-      opacity: 1;
-    }
-    nav a {
-      padding: 0.8rem 1rem;
-      text-decoration: none;
-      font-family: 'Courier New', Courier, monospace;
-      text-transform: lowercase;
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      color: #000;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: var(--accent-blue);
-    }
-
-    /* 오버레이 */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 60px);
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 999;
-    }
-    .overlay.show {
-      display: block;
-    }
-
-    /* Hero */
-    .hero {
-      height: calc(100vh - 60px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .box {
-      border: 1px solid #000;
-      padding: 2rem 3rem;
-      min-width: 250px;
-      font-family: 'Courier New', Courier, monospace;
-      text-transform: lowercase;
-      font-size: 1rem;
-      letter-spacing: 0.2em;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .box:hover {
-      border-color: var(--accent-blue);
-      color: var(--accent-blue);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      gap: 5px;
     }
 
-    /* 데스크탑 메뉴 */
-    @media (min-width: 768px) {
-      nav {
-        display: flex !important;
-        opacity: 1 !important;
-        position: static;
-        flex-direction: row;
-        background: none;
-        border-bottom: none;
-        width: auto;
-      }
-      nav a {
-        padding: 0 1.2rem;
-      }
-      .menu-toggle, .overlay {
+    .menu-toggle span {
+      width: 22px;
+      height: 2px;
+      background: #004E89; /* 포인트 컬러 */
+    }
+
+    /* 메인 섹션 */
+    main {
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .hero-text {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image img {
+      max-width: 45%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* 반응형 */
+    @media (max-width: 768px) {
+      nav ul {
         display: none;
+        flex-direction: column;
+        gap: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        padding: 1rem 2rem;
+        border-left: 1px solid #ddd;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero-image img {
+        max-width: 80%;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 오버레이 -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- 헤더 -->
-  <header>
-    <h1 class="eng">brand studio</h1>
-    <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
-  </header>
-
-  <!-- 네비게이션 -->
-  <nav id="navbar">
-    <a href="#about">about</a>
-    <a href="#collection">collection</a>
-    <a href="#journal">journal</a>
-    <a href="#services">services</a>
-    <a href="#contact">contact</a>
+<header>
+  <div class="logo">brand<br>studio</div>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="#">about</a></li>
+      <li><a href="#">collection</a></li>
+      <li><a href="#">journal</a></li>
+      <li><a href="#">services</a></li>
+      <li><a href="#">contact</a></li>
+    </ul>
   </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="box">discover our vision</div>
-  </section>
+<main>
+  <div class="hero-text">
+    design that speaks quietly but deeply
+  </div>
+  <div class="hero-image">
+    <img src="https://raw.githubusercontent.com/rmsxok/rmsxok.github.io/refs/heads/main/dclassic%202025-04-09%20223555.716.jpeg" alt="Vintage Cafe View">
+  </div>
+</main>
 
-  <!-- 푸터 -->
-  <footer>
-    © 2025 brand studio • all rights reserved
-  </footer>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navbar = document.getElementById('navbar');
-    const overlay = document.getElementById('overlay');
-
-    menuToggle.addEventListener('click', () => {
-      navbar.classList.toggle('show');
-      overlay.classList.toggle('show');
-    });
-
-    overlay.addEventListener('click', () => {
-      navbar.classList.remove('show');
-      overlay.classList.remove('show');
-    });
-  </script>
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
 
 </body>
 </html>

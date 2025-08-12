@@ -28,22 +28,7 @@
       line-height: 1.2;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-size: 0.9rem;
-      text-transform: lowercase;
-    }
-
-    /* 모바일 메뉴 버튼 */
+    /* 햄버거 버튼 */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -59,27 +44,49 @@
     .menu-toggle span {
       width: 24px;
       height: 2px;
-      background: #004E89; /* 포인트 컬러 */
+      background: #004E89;
       border-radius: 1px;
     }
 
-    /* 오버레이 */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
+    /* 드롭다운 메뉴 */
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      background: rgba(255,255,255,0.98);
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      min-width: 110px;
+      animation: dropdown 0.25s ease forwards;
     }
 
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
+    nav ul.active {
+      display: flex;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 0.9rem;
+      padding: 0.2rem 0.8rem;
+      text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.1);
+    }
+
+    nav ul li a:hover {
+      background: rgba(0,78,137,0.05);
+      border-radius: 3px;
+    }
+
+    @keyframes dropdown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* 메인 섹션 */
@@ -101,39 +108,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* 반응형 */
+    /* 모바일 */
     @media (max-width: 768px) {
-      nav ul {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-        position: fixed;
-        top: 0;
-        right: -160px; /* 초기 숨김 */
-        width: 140px; /* 폭 줄임 */
-        height: auto;
-        background: rgba(255,255,255,0.95);
-        padding: 4rem 1rem;
-        border-left: 1px solid #ddd;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-        transition: right 0.3s ease;
-        z-index: 1001;
-      }
-
-      nav ul.active {
-        right: 0; /* 슬라이드 인 */
-      }
-
-      nav ul li a {
-        font-size: 0.95rem;
-        color: #000;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* 은은한 그림자 */
-      }
-
       .menu-toggle {
         display: flex;
       }
-
       .hero-image img {
         max-width: 80%;
       }
@@ -160,8 +139,6 @@
   </nav>
 </header>
 
-<div class="overlay" id="overlay"></div>
-
 <main>
   <div class="hero-text">
     design that speaks quietly but deeply
@@ -174,16 +151,16 @@
 <script>
   const menuToggle = document.getElementById('menu-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const overlay = document.getElementById('overlay');
 
   menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
   });
 
-  overlay.addEventListener('click', () => {
-    navMenu.classList.remove('active');
-    overlay.classList.remove('active');
+  // 화면 클릭 시 닫기
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('header')) {
+      navMenu.classList.remove('active');
+    }
   });
 </script>
 
